@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+fieldset {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.participant {
+    margin-bottom: 10px;
+}
+
+#summary {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.hide {
+    display: none;
+}
+
+/* CSS for grid layout */
+fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+button {
+    grid-column: span 2; /* Ensure buttons span both columns */
+}
