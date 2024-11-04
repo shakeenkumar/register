@@ -1,10 +1,12 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
+    background-color: #f0f0f0; /* Optional: Light background color for better contrast */
 }
 
 h1 {
     text-align: center;
+    color: #333; /* Optional: Darker color for better readability */
 }
 
 fieldset {
@@ -12,26 +14,46 @@ fieldset {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    background-color: #fff; /* Optional: White background for fieldset */
 }
 
+/* Specific styles for participants */
 .participant {
     margin-bottom: 10px;
 }
 
-button {
-    grid-column: span 2;
-}
-
+/* Styles for summary display */
 #summary {
     margin-top: 20px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Soft background for summary */
+    font-weight: bold; /* Bold text for emphasis */
 }
 
+/* Hide class for elements */
 .hide {
     display: none;
+}
+
+/* CSS for grid layout */
+fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for the input fields */
+}
+
+/* Button styling */
+button {
+    grid-column: span 2; /* Ensure buttons span both columns */
+    background-color: #4CAF50; /* Green background for buttons */
+    color: white; /* White text color for contrast */
+    border: none; /* Remove default border */
+    padding: 10px; /* Padding for better touch targets */
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover for visual feedback */
 }
