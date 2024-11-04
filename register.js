@@ -1,44 +1,43 @@
+// Initialize the participant count
 let participantCount = 1;
 
-document.getElementById('addParticipant').addEventListener('click', addParticipant);
-document.getElementById('registrationForm').addEventListener('submit', submitForm);
-
-function addParticipant() {
-    participantCount++;
-    const participantHTML = participantTemplate(participantCount);
-    const addButton = document.getElementById('addParticipant');
-    addButton.insertAdjacentHTML('beforebegin', participantHTML);
-}
-
+// Function to generate the participant template
 function participantTemplate(count) {
     return `
-        <div class="participant${count}">
-            <label for="fee${count}">Participant Fee:</label>
-            <input type="number" id="fee${count}" class="fee" required>
-        </div>
+        <section class="participant" id="participant${count}">
+            <label for="name${count}">Participant Name:</label>
+            <input type="text" id="name${count}" required>
+            <label for="fee${count}">Fee:</label>
+            <input type="number" id="fee${count}" required>
+        </section>
     `;
 }
 
-function submitForm(event) {
-    event.preventDefault();
-    const totalFeesAmount = totalFees();
-    const adultName = document.getElementById('adultName').value;
-    document.getElementById('registrationForm').style.display = 'none';
-    document.getElementById('summary').innerHTML = successTemplate({
-        name: adultName,
-        participants: participantCount,
-        totalFees: totalFeesAmount
-    });
-    document.getElementById('summary').classList.remove('hide');
-}
+// Add event listener for the Add Participant button
+document.getElementById('add-participant').addEventListener('click', () => {
+    participantCount++;
+    const participantFieldset = document.getElementById('participants');
+    // Insert the new participant template before the button
+    participantFieldset.insertAdjacentHTML('beforeend', participantTemplate(participantCount));
+});
 
+// Function to calculate total fees
 function totalFees() {
-    let feeElements = document.querySelectorAll("[id^=fee]");
-    feeElements = [...feeElements];
-    const total = feeElements.reduce((sum, feeElement) => sum + Number(feeElement.value), 0);
-    return total;
+    // Select all fee inputs
+    const feeElements = document.querySelectorAll("[id^='fee']");
+    // Convert NodeList to an array and sum up the values
+    return [...feeElements].reduce((total, input) => total + parseFloat(input.value) || 0, 0);
 }
 
-function successTemplate(info) {
-    return `Thank you ${info.name} for registering. You have registered ${info.participants} participants and owe $${info.totalFees} in fees.`;
-}
+// Submit form handling
+document.getElementById('registration-form').addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent the form from submitting normally
+    const adultName = document.getElementById('adult-name').value; // Get adult name
+    const totalFeesAmount = totalFees(); // Calculate total fees
+    const summaryElement = document.getElementById('summary');
+    
+    // Hide the form and show the summary
+    document.getElementById('registration-form').style.display = 'none';
+    summaryElement.style.display = 'block';
+    summaryElement.innerHTML = `Thank you ${adultName} for registering. You have registered ${participantCount} participants and owe $${totalFeesAmount} in Fees.`;
+});
