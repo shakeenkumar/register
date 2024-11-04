@@ -14,11 +14,11 @@
     <form id="registrationForm">
         <fieldset>
             <legend>Participants</legend>
-            <div class="participant1">
-                <label for="adultName">Adult Name:</label>
-                <input type="text" id="adultName" required>
-                <label for="fee1">Participant Fee:</label>
-                <input type="number" id="fee1" class="fee" required>
+            <div class="participant" id="participant${count}">
+                <label for="name${count}">Participant Name:</label>
+                <input type="text" id="name${count}" required>
+                <label for="fee${count}">Fee:</label>
+                <input type="number" id="fee${count}" required>
             </div>
             <button type="button" id="addParticipant">Add Participant</button>
         </fieldset>
