@@ -3,38 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Registration</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="description" content="Registration form for camp">
+    <meta name="author" content="Your Name">
+    <title>Camp Registration</title>
+    <link rel="stylesheet" href="register.css">
+    <link rel="icon" href="favicon.ico">
 </head>
 <body>
-
-    <h1>Event Registration</h1>
-    
+    <h1>Camp Registration Form</h1>
     <form id="registrationForm">
         <fieldset>
-            <label for="adultName">Adult Name:</label>
-            <input type="text" id="adultName" name="adultName" required>
-        </fieldset>
-
-        <fieldset id="participantsContainer">
             <legend>Participants</legend>
-            <div class="participant">
-                <label for="participantName1">Participant Name:</label>
-                <input type="text" class="participant-name" id="participantName1" name="participantName" required>
-
-                <label for="participantFee1">Fee ($):</label>
-                <input type="number" class="participant-fee" id="participantFee1" name="participantFee" required>
+            <div class="participant" id="participant${count}">
+                <label for="name${count}">Participant Name:</label>
+                <input type="text" id="name${count}" required>
+                <label for="fee${count}">Fee:</label>
+                <input type="number" id="fee${count}" required>
             </div>
+            <button type="button" id="addParticipant">Add Participant</button>
         </fieldset>
-        
-        <button type="button" id="addParticipantButton">Add Participant</button>
-        <button type="submit">Submit</button>
+        <button type="submit">Submit Registration</button>
     </form>
-
     <div id="summary" class="hide"></div>
-
-    <script src="Templates.js"></script>
     <script src="register.js"></script>
 </body>
 </html>
