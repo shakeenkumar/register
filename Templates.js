@@ -1,14 +1,14 @@
-export function participantTemplate(count) {
+// Function to create participant template
+function participantTemplate(count) {
     return `
-    <section class="participant${count}">
-        <label for="name${count}">Participant Name:</label>
-        <input type="text" id="name${count}" required>
-        <label for="fee${count}">Fee:</label>
-        <input type="number" id="fee${count}" required>
-    </section>
+        <div class="participant${count}">
+            <label for="fee${count}">Participant Fee:</label>
+            <input type="number" id="fee${count}" class="fee" required>
+        </div>
     `;
 }
 
-export function successTemplate(info) {
-    return `Thank you ${info.name} for registering. You have registered ${info.participants} participants and owe $${info.totalFees} in Fees.`;
+// Function to create success message template
+function successTemplate(info) {
+    return `Thank you ${info.name} for registering. You have registered ${info.participants} participants and owe $${info.totalFees} in fees.`;
 }
