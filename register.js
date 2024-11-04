@@ -20,9 +20,11 @@ function participantTemplate(count) {
 }
 
 function submitForm(event) {
-    event.preventDefault();
-    const totalFeesAmount = totalFees();
-    const adultName = document.getElementById('adultName').value;
+    event.preventDefault(); // Prevent the default form submission behavior
+    const totalFeesAmount = totalFees(); // Calculate total fees
+    const adultName = document.getElementById('adultName').value; // Get the adult's name
+
+    // Hide the form and display the summary
     document.getElementById('registrationForm').style.display = 'none';
     document.getElementById('summary').innerHTML = successTemplate({
         name: adultName,
@@ -33,12 +35,12 @@ function submitForm(event) {
 }
 
 function totalFees() {
-    let feeElements = document.querySelectorAll("[id^=fee]");
-    feeElements = [...feeElements];
-    const total = feeElements.reduce((sum, feeElement) => sum + Number(feeElement.value), 0);
+    let feeElements = document.querySelectorAll("[id^=fee]"); // Select all fee input fields
+    feeElements = [...feeElements]; // Convert NodeList to array
+    const total = feeElements.reduce((sum, feeElement) => sum + Number(feeElement.value), 0); // Sum the values
     return total;
 }
 
 function successTemplate(info) {
-    return `Thank you ${info.name} for registering. You have registered ${info.participants} participants and owe $${info.totalFees} in fees.`;
+    return `Thank you ${info.name} for registering. You have registered ${info.participants} participants and owe $${info.totalFees} in fees.`; // Create summary message
 }
